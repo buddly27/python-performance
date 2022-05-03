@@ -96,7 +96,7 @@ jobs:
                     python -m pip install pyperformance
             -   name: Compare Benchmarks
                 run:
-                    pyperformance compare ~/data/ubuntu-py37.json ~/data/ubuntu-py38.json
+                    pyperformance compare ~/data/ubuntu-py37/ubuntu-py37.json ~/data/ubuntu-py38/ubuntu-py38.json
                 
 
 
