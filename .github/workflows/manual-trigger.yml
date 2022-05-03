@@ -6,13 +6,11 @@ on:
 jobs:
     benchmark:
         runs-on: ${{ matrix.os }}
-        timeout-minutes: 30
 
         strategy:
             fail-fast: false
             matrix:
                 name: [
-                        "ubuntu-py27",
                         "ubuntu-py37",
                         "ubuntu-py38",
                         "ubuntu-py39",
@@ -28,9 +26,6 @@ jobs:
                 ]
 
                 include:
-                    -   name: "ubuntu-py27"
-                        python: "2.7"
-                        os: ubuntu-latest
                     -   name: "ubuntu-py37"
                         python: "3.7"
                         os: ubuntu-latest
