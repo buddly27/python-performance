@@ -32,36 +32,36 @@ jobs:
                     -   name: "ubuntu-py38"
                         python: "3.8"
                         os: ubuntu-latest
-                    -   name: "ubuntu-py39"
-                        python: "3.9"
-                        os: ubuntu-latest
-                    -   name: "ubuntu-py310"
-                        python: "3.10"
-                        os: ubuntu-latest
-                    -   name: "macos-py37"
-                        python: "3.7"
-                        os: macos-latest
-                    -   name: "macos-py38"
-                        python: "3.8"
-                        os: macos-latest
-                    -   name: "macos-py39"
-                        python: "3.9"
-                        os: macos-latest
-                    -   name: "macos-py310"
-                        python: "3.10"
-                        os: macos-latest
-                    -   name: "windows-py37"
-                        python: "3.7"
-                        os: windows-latest
-                    -   name: "windows-py38"
-                        python: "3.8"
-                        os: windows-latest
-                    -   name: "windows-py39"
-                        python: "3.9"
-                        os: windows-latest
-                    -   name: "windows-py310"
-                        python: "3.10"
-                        os: windows-latest
+#                    -   name: "ubuntu-py39"
+#                        python: "3.9"
+#                        os: ubuntu-latest
+#                    -   name: "ubuntu-py310"
+#                        python: "3.10"
+#                        os: ubuntu-latest
+#                    -   name: "macos-py37"
+#                        python: "3.7"
+#                        os: macos-latest
+#                    -   name: "macos-py38"
+#                        python: "3.8"
+#                        os: macos-latest
+#                    -   name: "macos-py39"
+#                        python: "3.9"
+#                        os: macos-latest
+#                    -   name: "macos-py310"
+#                        python: "3.10"
+#                        os: macos-latest
+#                    -   name: "windows-py37"
+#                        python: "3.7"
+#                        os: windows-latest
+#                    -   name: "windows-py38"
+#                        python: "3.8"
+#                        os: windows-latest
+#                    -   name: "windows-py39"
+#                        python: "3.9"
+#                        os: windows-latest
+#                    -   name: "windows-py310"
+#                        python: "3.10"
+#                        os: windows-latest
 
         steps:
             -   uses: actions/checkout@v3
