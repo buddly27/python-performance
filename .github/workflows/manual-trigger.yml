@@ -13,16 +13,16 @@ jobs:
                 name: [
                         "ubuntu-py37",
                         "ubuntu-py38",
-                        "ubuntu-py39",
-                        "ubuntu-py310",
-                        "macos-py37",
-                        "macos-py38",
-                        "macos-py39",
-                        "macos-py310",
-                        "windows-py37",
-                        "windows-py38",
-                        "windows-py39",
-                        "windows-py310",
+#                        "ubuntu-py39",
+#                        "ubuntu-py310",
+#                        "macos-py37",
+#                        "macos-py38",
+#                        "macos-py39",
+#                        "macos-py310",
+#                        "windows-py37",
+#                        "windows-py38",
+#                        "windows-py39",
+#                        "windows-py310",
                 ]
 
                 include:
@@ -80,4 +80,16 @@ jobs:
                 with:
                     name: ${{ matrix.name }}
                     path: "${{ matrix.name }}.json"
+
+    post_benchmark:
+        if: ${{ always() }}
+        needs: ["benchmark"]
+
+        steps:
+            -   uses: actions/download-artifact@v3
+            -   name: Compare Benchmarks
+                run: |
+                    pyperformance compare ubuntu-py37.json ubuntu-py38.json
+                
+
 
