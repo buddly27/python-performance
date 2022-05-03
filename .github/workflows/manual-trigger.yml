@@ -88,13 +88,15 @@ jobs:
 
         steps:
             -   uses: actions/download-artifact@v3
+                with:
+                    path: ~/benchmarks
             -   name: Install dependencies
                 run: |
                     python -m pip install --upgrade pip
                     python -m pip install pyperformance
             -   name: Compare Benchmarks
                 run:
-                    pyperformance compare ubuntu-py37.json ubuntu-py38.json
+                    pyperformance compare ~/benchmarks/ubuntu-py37.json ~/benchmarks/ubuntu-py38.json
                 
 
 
