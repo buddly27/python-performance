@@ -75,11 +75,11 @@ jobs:
                     python -m pip install pyperformance
             -   name: Run Benchmarks
                 run: |
-                    pyperformance run -b pickle -o "${{ matrix.name }}.json"
+                    pyperformance run -b pickle -o data.json
             -   uses: actions/upload-artifact@v3
                 with:
                     name: ${{ matrix.name }}
-                    path: "${{ matrix.name }}.json"
+                    path: data.json
 
     post_benchmark:
         runs-on: ubuntu-latest
@@ -95,10 +95,10 @@ jobs:
             -   name: Compare Benchmarks
                 run: >
                     pyperf compare_to 
-                    ./ubuntu-py37/ubuntu-py37.json 
-                    ./ubuntu-py38/ubuntu-py38.json
-                    ./ubuntu-py38/ubuntu-py39.json
-                    ./ubuntu-py38/ubuntu-py310.json
+                    ./ubuntu-py37/data.json 
+                    ./ubuntu-py38/data.json
+                    ./ubuntu-py39/data.json
+                    ./ubuntu-py310/data.json
                     --table
                 
 
