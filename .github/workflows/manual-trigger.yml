@@ -82,6 +82,7 @@ jobs:
                     path: "${{ matrix.name }}.json"
 
     post_benchmark:
+        runs-on: ubuntu-latest
         if: ${{ always() }}
         needs: ["benchmark"]
 
