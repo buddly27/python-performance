@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    benchmark:
+    benchmark_python:
         runs-on: ${{ matrix.os }}
 
         strategy:
@@ -81,10 +81,30 @@ jobs:
                     name: ${{ matrix.name }}
                     path: data.json
 
-    post_benchmark:
+    benchmark_pyston:
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Install Pyston 
+                run: |
+                    wget https://github.com/pyston/pyston/releases/download/pyston_2.3.3/pyston_2.3.3_20.04_arm64.deb
+                    sudo dpkg -i package_file.deb
+            -   name: Install dependencies
+                run: |
+                    python -m pip install --upgrade pip
+                    python -m pip install pyperformance
+            -   name: Run Benchmarks
+                run: |
+                    pyperformance run -p pyston -b pickle -o data.json
+            -   uses: actions/upload-artifact@v3
+                with:
+                    name: ${{ matrix.name }}
+                    path: data.json
+
+    comparison:
         runs-on: ubuntu-latest
         if: ${{ always() }}
-        needs: ["benchmark"]
+        needs: ["benchmark_python"]
 
         steps:
             -   uses: actions/download-artifact@v3
