@@ -87,8 +87,10 @@ jobs:
         steps:
             -   name: Install Pyston 
                 run: |
-                    wget https://github.com/pyston/pyston/releases/download/pyston_2.3.3/pyston_2.3.3_20.04_arm64.deb
-                    sudo dpkg -i pyston_2.3.3_20.04_arm64.deb
+                    git clone https://github.com/pyston/pyston.git
+                    cd pyston
+                    git submodule update --init pyston/LuaJIT pyston/macrobenchmarks
+                    pyston/conda/build_pkgs.sh
             -   name: Install dependencies
                 run: |
                     python -m pip install --upgrade pip
