@@ -1,4 +1,4 @@
-name: Manual workflow
+name: Run Benchmarks
 
 on:
     workflow_dispatch:
@@ -75,29 +75,7 @@ jobs:
                     python -m pip install pyperformance
             -   name: Run Benchmarks
                 run: |
-                    pyperformance run -b pickle -o data.json
-            -   uses: actions/upload-artifact@v3
-                with:
-                    name: ${{ matrix.name }}
-                    path: data.json
-
-    benchmark_pyston:
-        runs-on: ubuntu-latest
-
-        steps:
-            -   name: Install Pyston 
-                run: |
-                    git clone https://github.com/pyston/pyston.git
-                    cd pyston
-                    git submodule update --init pyston/LuaJIT pyston/macrobenchmarks
-                    pyston/conda/build_pkgs.sh
-            -   name: Install dependencies
-                run: |
-                    python -m pip install --upgrade pip
-                    python -m pip install pyperformance
-            -   name: Run Benchmarks
-                run: |
-                    pyperformance run -p pyston -b pickle -o data.json
+                    pyperformance run -o data.json
             -   uses: actions/upload-artifact@v3
                 with:
                     name: ${{ matrix.name }}
